@@ -52,23 +52,23 @@ public class Catalogo {
     }
     
     public boolean removeProduto(){
-        int i = 0;
+        int i;
         Scanner input = new Scanner (System.in);
         if(Produtos.size()>0){
             String aux = input.nextLine();
             input.reset();
-            boolean stat = aux.equals(Produtos.get(i).getNome());
+            boolean stat;
             for (i=0;i<Produtos.size();i++){
                 stat = aux.equals(Produtos.get(i).getNome());
+                if(stat){
+                    Produtos.remove(i);
+                    System.out.println("\t*Produto " + aux + " removido");
+                    return true;
+                }else{
+                    System.out.println("\t*Produto " + aux + " não pode ser removido");
+                    return false;
+                }
             } 
-            if(stat){
-                Produtos.remove(i);
-                System.out.println("\t*Produto " + aux + " removido");
-                return true;
-            }else{
-                System.out.println("\t*Produto " + aux + " não pode ser removido");
-                return false;
-            }
             
         }
         System.out.println("***!!!Catalogo vazio!!!***");
@@ -76,7 +76,7 @@ public class Catalogo {
     }
     
     public boolean editarProduto(){
-        int i = 0;
+        int i;
         Scanner input = new Scanner (System.in);
         if(Produtos.size()>0){
             String aux = input.nextLine();
